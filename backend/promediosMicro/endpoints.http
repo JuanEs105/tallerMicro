@@ -1,0 +1,9 @@
+### Registrar ingreso de estudiante
+
+POST http://localhost:8000/api/estudiantes
+Content-Type: application/json
+
+{
+
+    
+}
