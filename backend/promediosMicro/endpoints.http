@@ -11,3 +11,14 @@ Content-Type: application/json
 ###listar estudiantes
 
 GET http://localhost:8000/api/estudiantes
+
+### Agregar Notas
+
+POST http://localhost:8000/api/notas
+Content-Type: application/json
+
+{
+  "actividad": "Examen Final",
+  "nota": 4.5,
+  "codEstudiante": 5555
+}
