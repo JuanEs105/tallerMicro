@@ -1,17 +1,13 @@
 <?php
 
-use app\Http\Controllers\estudiantesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstudiantesController;
 
-Route::middleware('api')->group(function(){
-
-    Route::prefix('estudiantes')->group(function() {
-        Route::post('/', [estudiantesController::class,'store']);
-    });
-
+Route::prefix('estudiantes')->group(function() {
+    Route::post('/', [EstudiantesController::class, 'store']); // Crear un estudiante
+    Route::get('/', [EstudiantesController::class, 'index']); // Obtener lista de estudiantes
 });
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

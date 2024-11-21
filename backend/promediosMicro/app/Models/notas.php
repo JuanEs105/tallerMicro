@@ -4,14 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class notas extends Model
+class Notas extends Model
 {
     protected $table = 'notas';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $keyType = 'integer';
+    public $timestamps = false; // Sin marcas de tiempo automáticas
 
     protected $fillable = [
-        'id',
         'actividad',
         'nota',
-        'codEstudiante'
-];
+        'codEstudiante',
+    ];
+
+    // Relación inversa con la tabla `estudiantes`
+    public function estudiante()
+    {
+        return $this->belongsTo(Estudiantes::class, 'codEstudiante', 'cod');
+    }
 }

@@ -4,6 +4,10 @@ POST http://localhost:8000/api/estudiantes
 Content-Type: application/json
 
 {
-
-    
+"cod": 5555,
+  "nombres": "Carlos Perez",
+  "email": "carlos@test.com"
 }
+###listar estudiantes
+
+GET http://localhost:8000/api/estudiantes
