@@ -4,9 +4,9 @@ POST http://localhost:8000/api/estudiantes
 Content-Type: application/json
 
 {
-"cod": 5555,
-  "nombres": "Carlos Perez",
-  "email": "carlos@test.com"
+"cod": 5987,
+  "nombres": "juan",
+  "email": "juancho@test.com"
 }
 ###listar estudiantes
 
@@ -19,6 +19,32 @@ Content-Type: application/json
 
 {
   "actividad": "Examen Final",
-  "nota": 4.5,
-  "codEstudiante": 5555
+  "nota": 2,
+  "codEstudiante": 9876
 }
+
+
+### Buscar Estudiante por ID
+
+GET http://localhost:8000/api/estudiantes/9876
+
+
+
+### Actualizar Estudiante
+PUT http://localhost:8000/api/estudiantes/5987
+Content-Type: application/json
+
+{
+    "cod": "9267",
+    "nombres": "Juan Pérez",
+    "email": "juan.perez@example.com"
+}
+
+### Eliminar Estudiante
+DELETE http://localhost:8000/api/estudiantes/5555
+Content-Type: application/json
+
+
+
+
+
