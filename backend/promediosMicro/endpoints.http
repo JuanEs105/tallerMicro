@@ -18,9 +18,9 @@ POST http://localhost:8000/api/notas
 Content-Type: application/json
 
 {
-  "actividad": "Examen Final",
-  "nota": 2,
-  "codEstudiante": 9876
+  "actividad": "Actividad 1",
+  "nota": 1,
+  "codEstudiante": 1234
 }
 
 
@@ -41,10 +41,14 @@ Content-Type: application/json
 }
 
 ### Eliminar Estudiante
-DELETE http://localhost:8000/api/estudiantes/5555
-Content-Type: application/json
+DELETE http://localhost:8000/api/estudiantes/9876
+
+### COnfirmacion de la Eliminacion
+DELETE http://localhost:8000/api/estudiantes/9876?confirmar=true
 
 
 
+### Notas clasificadas de un estudiante 
+GET http://localhost:8000/api/estudiantes/1234/notas
 
 

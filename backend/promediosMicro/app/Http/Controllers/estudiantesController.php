@@ -79,34 +79,33 @@ class EstudiantesController extends Controller
 
 
     public function destroy(Request $request, $id)
-{
-    // Buscar al estudiante por su ID
-    $estudiante = Estudiantes::find($id);
+    {
+        // Buscar al estudiante por su ID
+        $estudiante = Estudiantes::find($id);
 
-    // Verificar si el estudiante existe
-    if (!$estudiante) {
-        return response()->json(['error' => 'Estudiante no encontrado.'], 404);
+        // Verificar si el estudiante existe
+        if (!$estudiante) {
+            return response()->json(['error' => 'Estudiante no encontrado.'], 404);
+        }
+
+        // Eliminar las notas asociadas al estudiante
+        $estudiante->notas()->delete(); // Elimina todas las notas asociadas al estudiante
+
+        // Confirmación opcional
+        $confirmacion = $request->query('confirmar');
+
+        // Si no se ha confirmado, se envía un mensaje de confirmación
+        if ($confirmacion !== 'true') {
+            return response()->json([
+                'mensaje' => '¿Está seguro que desea eliminar este estudiante?',
+                'confirmar' => true
+            ], 200);
+        }
+
+        // Eliminar el estudiante
+        $estudiante->delete();
+
+        return response()->json(['mensaje' => 'Estudiante eliminado exitosamente.'], 200);
     }
-
-    // Eliminar las notas asociadas al estudiante
-    $estudiante->notas()->delete(); // Elimina todas las notas asociadas al estudiante
-
-    // Confirmación opcional
-    $confirmacion = $request->query('confirmar');
-
-    // Si no se ha confirmado, se envía un mensaje de confirmación
-    if ($confirmacion !== 'true') {
-        return response()->json([
-            'mensaje' => '¿Está seguro que desea eliminar este estudiante?',
-            'confirmar' => true
-        ], 200);
-    }
-
-    // Eliminar el estudiante
-    $estudiante->delete();
-
-    return response()->json(['mensaje' => 'Estudiante eliminado exitosamente.'], 200);
-}
-
 
 }

@@ -15,7 +15,9 @@ Route::prefix('estudiantes')->group(function() {
 
 // Rutas para las notas
 Route::prefix('notas')->group(function () {
+    Route::get('/', [NotasController::class, 'index']);
     Route::post('/', [NotasController::class, 'store']); // Agregar nueva nota
+    Route::put('notas/{id}', [NotasController::class, 'update']);
 });
 
 
